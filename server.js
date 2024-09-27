@@ -9,6 +9,7 @@ const protectedRoutes = require('./routes/protected');
 const { APIToolkit } = require("apitoolkit-express");
 const parentRoutes = require('./routes/parent');  // Import the new parent routes
 const coachRoutes = require('./routes/coach');  // Import the coach routes
+const trainingSessionRoutes = require('./routes/trainingSession');
 
 
 dotenv.config();  // Load environment variables
@@ -32,6 +33,9 @@ app.use('/api/parent', parentRoutes);
 app.use('/api/coach', coachRoutes);
 
 app.use(apitoolkitClient.errorHandler);
+
+// Use the training session routes under `/api/training-sessions`
+app.use('/api/training-sessions', trainingSessionRoutes);
 
 // Initialize MongoDB
 connectMongoDB();

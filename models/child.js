@@ -28,6 +28,14 @@ const Child = {
         );
         return rows;
     },
+
+    findById: async (childId) => {
+        const [rows] = await db.query(
+            'SELECT * FROM children WHERE id = ?',
+            [childId]
+        );
+        return rows[0];  // Return the first matching child or null
+    },
 };
 
 module.exports = Child;
