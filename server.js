@@ -10,6 +10,7 @@ const { APIToolkit } = require("apitoolkit-express");
 const parentRoutes = require('./routes/parent');  // Import the new parent routes
 const coachRoutes = require('./routes/coach');  // Import the coach routes
 const trainingSessionRoutes = require('./routes/trainingSession');
+const exerciseRoutes = require('./routes/exercise');  // Import the exercise route
 
 
 dotenv.config();  // Load environment variables
@@ -31,6 +32,9 @@ app.use('/api/parent', parentRoutes);
 
 // Use the coach routes under `/api/coach`
 app.use('/api/coach', coachRoutes);
+
+// Register the exercises routes under `/api/exercises`
+app.use('/api/exercises', exerciseRoutes);  // Add the exercise route here
 
 app.use(apitoolkitClient.errorHandler);
 
