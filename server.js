@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
@@ -11,13 +10,15 @@ const parentRoutes = require('./routes/parent');  // Import the new parent route
 const coachRoutes = require('./routes/coach');  // Import the coach routes
 const trainingSessionRoutes = require('./routes/trainingSession');
 const exerciseRoutes = require('./routes/exercise');  // Import the exercise route
-
+const cors = require('cors');
 
 dotenv.config();  // Load environment variables
 
+// Initialize the app object here
 const app = express();
 
 // Middleware
+app.use(cors()); // Move cors after initializing app
 app.use(bodyParser.json());
 const apitoolkitClient = APIToolkit.NewClient({ apiKey: process.env.API_TOOLKIT_API_KEY });
 app.use(apitoolkitClient.expressMiddleware);
