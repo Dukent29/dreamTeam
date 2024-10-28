@@ -31,10 +31,10 @@ const User = {
 
     findById: async (id) => {
         const [rows] = await db.query(
-            'SELECT id, first_name, last_name, email, phone_number FROM users WHERE id = ? AND role = "coach"',
+            'SELECT * FROM users WHERE id = ?',
             [id]
         );
-        return rows[0];  // Return the first matching coach
+        return rows[0];  // Return the first matching user (or null if not found)
     },
 };
 

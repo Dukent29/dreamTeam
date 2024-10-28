@@ -9,6 +9,13 @@ const Category = {
         );
         return rows[0];  // Return the first matching category
     },
+    findById: async (categoryId) => {
+        const [rows] = await db.query(
+            'SELECT * FROM categories WHERE id = ?',
+            [categoryId]
+        );
+        return rows[0];  // Return the first matching category or null
+    },
 };
 
 module.exports = Category;
